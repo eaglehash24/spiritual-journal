@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Духовный дневник — тихое пространство для самоисследования."
+    />
+    <title>Духовный дневник — Самоисследование</title>
+    <link rel="icon" href="assets/face-clean.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css?v=20261030-journal-notes-1" />
+  </head>
+  <body>
+    <main class="landing" id="landing-screen" aria-labelledby="page-title">
+      <img class="background-image" src="assets/face-clean2.png" alt="" aria-hidden="true" />
+      <div class="image-overlay" aria-hidden="true"></div>
+
+      <nav class="language-switch" aria-label="Выбор языка" id="language-switch">
+        <button class="language-button" type="button" data-language="ru" aria-pressed="true">RU</button>
+        <button class="language-button" type="button" data-language="uk" aria-pressed="false">UK</button>
+        <button class="language-button" type="button" data-language="en" aria-pressed="false">EN</button>
+      </nav>
+
+      <section class="title-stage">
+        <h1 id="page-title">Духовный дневник</h1>
+        <span class="title-rule" aria-hidden="true"></span>
+        <p class="subtitle" id="subtitle">Самоисследование</p>
+      </section>
+
+      <div class="action-area">
+        <button class="start-button" type="button" id="start-button">
+          <span id="start-label">Начать</span>
+          <span class="button-arrow" aria-hidden="true">→</span>
+        </button>
+      </div>
+    </main>
+
+    <section class="journal-screen" id="menu-screen" aria-labelledby="menu-kicker" hidden>
+      <button class="screen-back" type="button" id="menu-back">← <span>На главный экран</span></button>
+      <button class="screen-forward" type="button" id="instruction-button"><span>Инструкция</span> →</button>
+      <div class="journal-panel menu-panel">
+        <img class="shiva-symbol" src="assets/Shiva-clean.png?v=20261028" alt="" aria-hidden="true" />
+        <p class="journal-kicker" id="menu-kicker">Духовный дневник</p>
+        <p class="menu-greeting" id="menu-greeting">Первый шаг начинается с тихого вдоха.</p>
+        <div class="journal-actions">
+          <button class="journal-action" type="button" id="continue-button">Продолжить запись</button>
+          <button class="journal-action journal-action-secondary" type="button" id="previous-button">Просмотр дневника</button>
+          <button class="journal-action journal-action-secondary" type="button" id="observations-button">Мои наблюдения</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="instruction-screen" aria-labelledby="instruction-title" hidden>
+      <div class="journal-panel instruction-panel">
+        <div class="content-screen-header">
+          <button class="screen-back" type="button" id="instruction-back">← <span>К меню</span></button>
+          <p class="journal-kicker" id="instruction-kicker">Духовный дневник</p>
+        </div>
+        <h1 class="journal-heading" id="instruction-title">Как вести дневник</h1>
+        <div class="instruction-content" id="instruction-content"></div>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="observations-screen" aria-labelledby="observations-title" hidden>
+      <div class="journal-panel observations-panel">
+        <div class="content-screen-header">
+          <button class="screen-back" type="button" id="observations-back">← <span>К меню</span></button>
+          <p class="journal-kicker" id="observations-kicker">Духовный дневник</p>
+        </div>
+        <h1 class="journal-heading" id="observations-title">Мои наблюдения</h1>
+        <p class="observations-intro" id="observations-intro"></p>
+        <form class="observation-form" id="observation-form">
+          <label class="sr-only" for="observation-text" id="observation-text-label">Текст заметки</label>
+          <textarea id="observation-text" rows="6" spellcheck="true"></textarea>
+          <div class="observation-form-actions">
+            <button class="journal-action" type="submit" id="observation-save">Сохранить наблюдение</button>
+            <button class="journal-action journal-action-secondary" type="button" id="observation-cancel" hidden>Отменить редактирование</button>
+          </div>
+          <p class="observation-status" id="observation-status" role="status" aria-live="polite" hidden></p>
+        </form>
+        <div class="observation-list" id="observation-list"></div>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="blocks-screen" aria-labelledby="blocks-kicker" hidden>
+      <button class="screen-back" type="button" id="blocks-back">← <span>К меню</span></button>
+      <div class="journal-panel blocks-panel">
+        <p class="journal-kicker" id="blocks-kicker">Духовный дневник</p>
+        <ul class="journal-block-list">
+          <li><button class="journal-block" type="button" data-journal-block="nonviolence">Ненасилие</button></li>
+          <li><button class="journal-block" type="button" data-journal-block="truthfulness">Правдивость</button></li>
+          <li><button class="journal-block" type="button" data-journal-block="chastity">Целомудрие</button></li>
+          <li><button class="journal-block" type="button" data-journal-block="loveHumility">Любовь ко всем существам</button></li>
+          <li><button class="journal-block" type="button" data-journal-block="vegetarianDiet">Вегетарианское питание</button></li>
+          <li><button class="journal-block" type="button" data-journal-block="selflessService">Бескорыстное служение</button></li>
+          <li><button class="journal-block" type="button" data-journal-block="meditationTime">Время медитации</button></li>
+        </ul>
+        <p class="block-selection" id="block-selection" role="status" aria-live="polite" hidden></p>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="nonviolence-screen" aria-labelledby="nonviolence-title" hidden>
+      <div class="journal-panel nonviolence-panel">
+        <p class="journal-kicker" id="nonviolence-kicker">Духовный дневник</p>
+        <h1 class="journal-heading" id="nonviolence-title">Ненасилие</h1>
+        <p class="entry-date-label nonviolence-date" id="nonviolence-date"></p>
+        <p class="nonviolence-read-only" id="nonviolence-read-only" hidden></p>
+        <div class="nonviolence-summary">
+          <p class="nonviolence-progress" id="nonviolence-progress"></p>
+          <p class="nonviolence-reminder" id="nonviolence-reminder"></p>
+        </div>
+        <div class="nonviolence-save-area">
+          <p class="nonviolence-save-status" id="nonviolence-save-status" role="status" aria-live="polite" hidden></p>
+          <button class="nonviolence-retry" type="button" id="nonviolence-retry" hidden>Повторить</button>
+        </div>
+        <div class="nonviolence-counters">
+          <section class="counter-row">
+            <p class="counter-label" id="counter-thoughts-label">В мыслях</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-counter-action="decrease" data-nonviolence-field="thoughts">−</button>
+              <output class="counter-value" data-counter-value="thoughts" aria-labelledby="counter-thoughts-label">—</output>
+              <button class="counter-step" type="button" data-counter-action="increase" data-nonviolence-field="thoughts">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-counter-action="zero" data-nonviolence-field="thoughts">Нарушений не было</button>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="counter-words-label">В словах</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-counter-action="decrease" data-nonviolence-field="words">−</button>
+              <output class="counter-value" data-counter-value="words" aria-labelledby="counter-words-label">—</output>
+              <button class="counter-step" type="button" data-counter-action="increase" data-nonviolence-field="words">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-counter-action="zero" data-nonviolence-field="words">Нарушений не было</button>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="counter-actions-label">В поступках</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-counter-action="decrease" data-nonviolence-field="actions">−</button>
+              <output class="counter-value" data-counter-value="actions" aria-labelledby="counter-actions-label">—</output>
+              <button class="counter-step" type="button" data-counter-action="increase" data-nonviolence-field="actions">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-counter-action="zero" data-nonviolence-field="actions">Нарушений не было</button>
+          </section>
+        </div>
+        <div class="nonviolence-navigation">
+          <button class="journal-action journal-action-secondary" type="button" id="nonviolence-back">← <span>Все блоки</span></button>
+          <button class="journal-action" type="button" id="nonviolence-next"><span id="nonviolence-next-label">Следующий блок</span> <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="nonviolence-next-notice" id="nonviolence-next-notice" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="truthfulness-screen" aria-labelledby="truthfulness-title" hidden>
+      <div class="journal-panel truthfulness-panel">
+        <p class="journal-kicker" id="truthfulness-kicker">Духовный дневник</p>
+        <h1 class="journal-heading" id="truthfulness-title">Правдивость</h1>
+        <p class="truthfulness-date" id="truthfulness-date"></p>
+        <p class="truthfulness-read-only" id="truthfulness-read-only" hidden></p>
+        <div class="truthfulness-summary">
+          <p class="truthfulness-progress" id="truthfulness-progress"></p>
+        </div>
+        <div class="truthfulness-save-area">
+          <p class="truthfulness-save-status" id="truthfulness-save-status" role="status" aria-live="polite" hidden></p>
+          <button class="truthfulness-retry" type="button" id="truthfulness-retry" hidden>Повторить</button>
+        </div>
+        <div class="truthfulness-counters">
+          <section class="counter-row">
+            <p class="counter-label" id="truthfulness-counter-untruth-label">Ложь</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-truthfulness-action="decrease" data-truthfulness-field="untruth">−</button>
+              <output class="counter-value" data-truthfulness-value="untruth" aria-labelledby="truthfulness-counter-untruth-label">—</output>
+              <button class="counter-step" type="button" data-truthfulness-action="increase" data-truthfulness-field="untruth">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-truthfulness-action="zero" data-truthfulness-field="untruth">Нарушений не было</button>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="truthfulness-counter-deception-label">Обман</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-truthfulness-action="decrease" data-truthfulness-field="deception">−</button>
+              <output class="counter-value" data-truthfulness-value="deception" aria-labelledby="truthfulness-counter-deception-label">—</output>
+              <button class="counter-step" type="button" data-truthfulness-action="increase" data-truthfulness-field="deception">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-truthfulness-action="zero" data-truthfulness-field="deception">Нарушений не было</button>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="truthfulness-counter-hypocrisy-label">Лицемірство</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-truthfulness-action="decrease" data-truthfulness-field="hypocrisy">−</button>
+              <output class="counter-value" data-truthfulness-value="hypocrisy" aria-labelledby="truthfulness-counter-hypocrisy-label">—</output>
+              <button class="counter-step" type="button" data-truthfulness-action="increase" data-truthfulness-field="hypocrisy">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-truthfulness-action="zero" data-truthfulness-field="hypocrisy">Нарушений не было</button>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="truthfulness-counter-fraud-label">Мошенничество</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-truthfulness-action="decrease" data-truthfulness-field="fraud">−</button>
+              <output class="counter-value" data-truthfulness-value="fraud" aria-labelledby="truthfulness-counter-fraud-label">—</output>
+              <button class="counter-step" type="button" data-truthfulness-action="increase" data-truthfulness-field="fraud">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-truthfulness-action="zero" data-truthfulness-field="fraud">Нарушений не было</button>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="truthfulness-counter-unlawful-enrichment-label">Незаконне збагачення</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-truthfulness-action="decrease" data-truthfulness-field="unlawfulEnrichment">−</button>
+              <output class="counter-value" data-truthfulness-value="unlawfulEnrichment" aria-labelledby="truthfulness-counter-unlawful-enrichment-label">—</output>
+              <button class="counter-step" type="button" data-truthfulness-action="increase" data-truthfulness-field="unlawfulEnrichment">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-truthfulness-action="zero" data-truthfulness-field="unlawfulEnrichment">Нарушений не было</button>
+          </section>
+        </div>
+        <div class="nonviolence-navigation truthfulness-navigation">
+          <button class="journal-action journal-action-secondary" type="button" id="truthfulness-back">← <span>Все блоки</span></button>
+          <button class="journal-action" type="button" id="truthfulness-next"><span id="truthfulness-next-label">Следующий блок</span> <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="truthfulness-next-notice" id="truthfulness-next-notice" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="chastity-screen" aria-labelledby="chastity-title" hidden>
+      <div class="journal-panel chastity-panel">
+        <p class="journal-kicker" id="chastity-kicker">Духовный дневник</p>
+        <h1 class="journal-heading" id="chastity-title">Целомудрие</h1>
+        <p class="chastity-date" id="chastity-date"></p>
+        <p class="chastity-read-only" id="chastity-read-only" hidden></p>
+        <div class="chastity-summary">
+          <p class="chastity-progress" id="chastity-progress"></p>
+        </div>
+        <div class="chastity-save-area">
+          <p class="chastity-save-status" id="chastity-save-status" role="status" aria-live="polite" hidden></p>
+          <button class="chastity-retry" type="button" id="chastity-retry" hidden>Повторить</button>
+        </div>
+        <div class="chastity-counters">
+          <section class="counter-row">
+            <p class="counter-label" id="chastity-counter-thoughts-label">В мыслях</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-chastity-action="decrease" data-chastity-field="thoughts">−</button>
+              <output class="counter-value" data-chastity-value="thoughts" aria-labelledby="chastity-counter-thoughts-label">—</output>
+              <button class="counter-step" type="button" data-chastity-action="increase" data-chastity-field="thoughts">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-chastity-action="zero" data-chastity-field="thoughts">Нарушений не было</button>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="chastity-counter-words-label">В словах</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-chastity-action="decrease" data-chastity-field="words">−</button>
+              <output class="counter-value" data-chastity-value="words" aria-labelledby="chastity-counter-words-label">—</output>
+              <button class="counter-step" type="button" data-chastity-action="increase" data-chastity-field="words">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-chastity-action="zero" data-chastity-field="words">Нарушений не было</button>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="chastity-counter-actions-label">В поступках</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-chastity-action="decrease" data-chastity-field="actions">−</button>
+              <output class="counter-value" data-chastity-value="actions" aria-labelledby="chastity-counter-actions-label">—</output>
+              <button class="counter-step" type="button" data-chastity-action="increase" data-chastity-field="actions">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-chastity-action="zero" data-chastity-field="actions">Нарушений не было</button>
+          </section>
+        </div>
+        <div class="nonviolence-navigation truthfulness-navigation chastity-navigation">
+          <button class="journal-action journal-action-secondary" type="button" id="chastity-back">← <span>Все блоки</span></button>
+          <button class="journal-action" type="button" id="chastity-next"><span id="chastity-next-label">Следующий блок</span> <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="truthfulness-next-notice" id="chastity-next-notice" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="love-all-beings-screen" aria-labelledby="love-all-beings-title" hidden>
+      <div class="journal-panel love-all-beings-panel">
+        <p class="journal-kicker" id="love-all-beings-kicker">Духовный дневник</p>
+        <h1 class="journal-heading" id="love-all-beings-title">Любовь ко всем существам</h1>
+        <p class="love-all-beings-date" id="love-all-beings-date"></p>
+        <p class="love-all-beings-read-only" id="love-all-beings-read-only" hidden></p>
+        <div class="love-all-beings-summary">
+          <p class="love-all-beings-progress" id="love-all-beings-progress"></p>
+        </div>
+        <div class="love-all-beings-save-area">
+          <p class="love-all-beings-save-status" id="love-all-beings-save-status" role="status" aria-live="polite" hidden></p>
+          <button class="love-all-beings-retry" type="button" id="love-all-beings-retry" hidden>Повторить</button>
+        </div>
+        <div class="love-all-beings-counters">
+          <section class="counter-row">
+            <p class="counter-label" id="love-all-beings-counter-knowledge-pride-label">Гордость знаниями</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-love-all-beings-action="decrease" data-love-all-beings-field="knowledgePride">−</button>
+              <output class="counter-value" data-love-all-beings-value="knowledgePride" aria-labelledby="love-all-beings-counter-knowledge-pride-label">—</output>
+              <button class="counter-step" type="button" data-love-all-beings-action="increase" data-love-all-beings-field="knowledgePride">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-love-all-beings-action="zero" data-love-all-beings-field="knowledgePride">Нарушений не было</button>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="love-all-beings-counter-wealth-pride-label">Гордость богатством</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-love-all-beings-action="decrease" data-love-all-beings-field="wealthPride">−</button>
+              <output class="counter-value" data-love-all-beings-value="wealthPride" aria-labelledby="love-all-beings-counter-wealth-pride-label">—</output>
+              <button class="counter-step" type="button" data-love-all-beings-action="increase" data-love-all-beings-field="wealthPride">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-love-all-beings-action="zero" data-love-all-beings-field="wealthPride">Нарушений не было</button>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="love-all-beings-counter-status-pride-label">Гордость статусом</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-love-all-beings-action="decrease" data-love-all-beings-field="statusPride">−</button>
+              <output class="counter-value" data-love-all-beings-value="statusPride" aria-labelledby="love-all-beings-counter-status-pride-label">—</output>
+              <button class="counter-step" type="button" data-love-all-beings-action="increase" data-love-all-beings-field="statusPride">+</button>
+            </div>
+            <button class="counter-zero" type="button" data-love-all-beings-action="zero" data-love-all-beings-field="statusPride">Нарушений не было</button>
+          </section>
+        </div>
+        <div class="nonviolence-navigation truthfulness-navigation love-all-beings-navigation">
+          <button class="journal-action journal-action-secondary" type="button" id="love-all-beings-back">← <span>Все блоки</span></button>
+          <button class="journal-action" type="button" id="love-all-beings-next"><span id="love-all-beings-next-label">Следующий блок</span> <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="truthfulness-next-notice" id="love-all-beings-next-notice" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="daily-choices-screen" aria-labelledby="vegetarian-food-title" hidden>
+      <div class="journal-panel daily-choices-panel">
+        <p class="journal-kicker" id="daily-choices-kicker">Духовный дневник</p>
+        <p class="daily-choices-date" id="daily-choices-date"></p>
+        <p class="daily-choices-read-only" id="daily-choices-read-only" hidden></p>
+        <p class="daily-choices-save-status" id="daily-choices-save-status" role="status" aria-live="polite" hidden></p>
+
+        <section class="daily-choice-section" aria-labelledby="vegetarian-food-title">
+          <h1 class="daily-choice-title" id="vegetarian-food-title">Вегетарианское питание</h1>
+          <div class="daily-choice-options" role="group" aria-labelledby="vegetarian-food-title">
+            <button class="daily-choice-option" type="button" data-daily-choice-section="vegetarianFood" data-daily-choice-value="yes" aria-pressed="false">Да</button>
+            <button class="daily-choice-option" type="button" data-daily-choice-section="vegetarianFood" data-daily-choice-value="no" aria-pressed="false">Нет</button>
+          </div>
+        </section>
+
+        <section class="daily-choice-section" aria-labelledby="selfless-service-title">
+          <h2 class="daily-choice-title" id="selfless-service-title">Бескорыстное служение</h2>
+          <div class="daily-choice-options" role="group" aria-labelledby="selfless-service-title">
+            <button class="daily-choice-option" type="button" data-daily-choice-section="selflessService" data-daily-choice-value="yes" aria-pressed="false">Да</button>
+            <button class="daily-choice-option" type="button" data-daily-choice-section="selflessService" data-daily-choice-value="no" aria-pressed="false">Нет</button>
+          </div>
+        </section>
+
+        <div class="nonviolence-navigation daily-choices-navigation">
+          <button class="journal-action journal-action-secondary" type="button" id="daily-choices-back">← <span>Все блоки</span></button>
+          <button class="journal-action" type="button" id="daily-choices-next"><span id="daily-choices-next-label">Следующий блок</span> <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="truthfulness-next-notice" id="daily-choices-next-notice" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="meditation-screen" aria-labelledby="meditation-title" hidden>
+      <div class="journal-panel meditation-panel">
+        <p class="journal-kicker" id="meditation-kicker">Духовный дневник</p>
+        <h1 class="journal-heading" id="meditation-title">Время медитации</h1>
+        <p class="entry-date-label meditation-date" id="meditation-date"></p>
+        <p class="meditation-read-only" id="meditation-read-only" hidden></p>
+        <p class="meditation-save-status" id="meditation-save-status" role="status" aria-live="polite" hidden></p>
+
+        <div class="meditation-counters">
+          <section class="counter-row">
+            <p class="counter-label" id="meditation-inner-light-label" data-meditation-label="meditationInnerLight">На внутренний свет</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-meditation-action="decrease" data-meditation-field="meditationInnerLight">−</button>
+              <div class="meditation-value-display">
+                <output class="counter-value" data-meditation-value="meditationInnerLight" aria-labelledby="meditation-inner-light-label">0</output>
+                <span class="meditation-unit" data-meditation-unit>ч.</span>
+              </div>
+              <button class="counter-step" type="button" data-meditation-action="increase" data-meditation-field="meditationInnerLight">+</button>
+            </div>
+          </section>
+          <section class="counter-row">
+            <p class="counter-label" id="meditation-inner-sound-label" data-meditation-label="meditationInnerSound">На внутренний звук</p>
+            <div class="counter-controls">
+              <button class="counter-step" type="button" data-meditation-action="decrease" data-meditation-field="meditationInnerSound">−</button>
+              <div class="meditation-value-display">
+                <output class="counter-value" data-meditation-value="meditationInnerSound" aria-labelledby="meditation-inner-sound-label">0</output>
+                <span class="meditation-unit" data-meditation-unit>ч.</span>
+              </div>
+              <button class="counter-step" type="button" data-meditation-action="increase" data-meditation-field="meditationInnerSound">+</button>
+            </div>
+          </section>
+        </div>
+
+        <div class="nonviolence-navigation meditation-navigation">
+          <button class="journal-action journal-action-secondary" type="button" id="meditation-back">← <span>Все блоки</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="history-months-screen" aria-labelledby="history-months-title" hidden>
+      <button class="screen-back" type="button" id="history-months-back">← <span>К меню</span></button>
+      <div class="journal-panel history-months-panel">
+        <p class="journal-kicker" id="history-months-kicker">Духовный дневник</p>
+        <h1 class="journal-heading" id="history-months-title">Просмотр дневника</h1>
+        <div class="history-month-list" id="history-month-list"></div>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="history-days-screen" aria-labelledby="history-days-title" hidden>
+      <button class="screen-back" type="button" id="history-days-back">← <span>К месяцам</span></button>
+      <div class="journal-panel history-days-panel">
+        <p class="journal-kicker" id="history-days-kicker">Духовный дневник</p>
+        <h1 class="journal-heading" id="history-days-title">Сентябрь 2026</h1>
+        <p class="history-current-label" id="history-current-label" hidden>Текущий месяц</p>
+        <button class="history-analytics-button" type="button" id="history-analytics-button">Показать аналитику за месяц</button>
+        <div class="history-day-list" id="history-day-list"></div>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="history-analytics-screen" aria-labelledby="history-analytics-title" hidden>
+      <button class="screen-back" type="button" id="history-analytics-back">← <span>К месяцу</span></button>
+      <div class="journal-panel history-analytics-panel">
+        <p class="journal-kicker" id="history-analytics-kicker">Духовный дневник</p>
+        <h1 class="journal-heading" id="history-analytics-title">Аналитика за месяц</h1>
+        <p class="history-analytics-month" id="history-analytics-month">Сентябрь 2026</p>
+        <div class="history-analytics-list" id="history-analytics-list"></div>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="date-screen" aria-labelledby="date-title" hidden>
+      <button class="screen-back" type="button" id="date-back">← <span>К меню</span></button>
+      <div class="journal-panel">
+        <p class="journal-kicker" id="date-kicker">Дневник</p>
+        <h1 class="journal-heading" id="date-title">Выберите дату</h1>
+        <form class="date-form" id="date-form">
+          <label for="entry-date" id="date-label">Дата записи</label>
+          <input id="entry-date" name="entry-date" type="date" required />
+          <button class="journal-action" type="submit" id="date-confirm">Открыть запись</button>
+        </form>
+        <p class="form-notice" id="date-notice" role="status" hidden></p>
+        <button class="journal-action" type="button" id="create-date-entry" hidden>Начать запись</button>
+      </div>
+    </section>
+
+    <section class="journal-screen" id="editor-screen" aria-labelledby="editor-title" hidden>
+      <button class="screen-back" type="button" id="editor-back">← <span>К меню</span></button>
+      <div class="journal-panel editor-panel">
+        <p class="journal-kicker" id="editor-kicker">Дневник</p>
+        <h1 class="journal-heading" id="editor-title">Запись</h1>
+        <p class="entry-date-label" id="editor-date"></p>
+        <label class="sr-only" for="entry-text" id="entry-text-label">Текст записи</label>
+        <textarea id="entry-text" rows="9" spellcheck="true"></textarea>
+        <div class="editor-footer">
+          <button class="journal-action" type="button" id="save-entry">Сохранить</button>
+          <p class="save-status" id="save-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+    <script src="script.js?v=20261030-journal-notes-1"></script>
+  </body>
+</html>
