@@ -7,7 +7,7 @@ const uiCopy = Object.freeze({
     htmlLang: 'ru', dateLocale: 'ru-RU', title: 'Духовный дневник', subtitle: 'Самоисследование', begin: 'Начать',
     firstStep: 'Первый шаг начинается с тихого вдоха.', menuBack: 'На главный экран', backToMenu: 'К меню', menuTitle: 'Дневник',
     continueEntries: 'Продолжить запись', editPrevious: 'Просмотр дневника', selectDate: 'Выберите дату',
-    instructionButton: 'Инструкция', instructionTitle: 'Как вести дневник', instructionBack: 'К меню',
+    instructionButton: 'Инструкция', instructionTitle: 'Инструкция по ведению духовного дневника', instructionBack: 'К меню',
     observationsButton: 'Мои наблюдения', observationsTitle: 'Мои наблюдения', observationsBack: 'К меню',
     observationsIntro: 'Свободные заметки о переживаниях, ситуациях, осознаниях и направлениях внутренней работы.',
     observationTextLabel: 'Текст наблюдения', observationPlaceholder: 'Что произошло? Что я почувствовал? Что я осознал? Над чем хочу поработать?',
@@ -66,7 +66,7 @@ const uiCopy = Object.freeze({
     htmlLang: 'uk', dateLocale: 'uk-UA', title: 'Духовний щоденник', subtitle: 'Самодослідження', begin: 'Почати',
     firstStep: 'Перший крок починається з тихого вдиху.', menuBack: 'На головний екран', backToMenu: 'До меню', menuTitle: 'Щоденник',
     continueEntries: 'Продовжити запис', editPrevious: 'Перегляд щоденника', selectDate: 'Оберіть дату',
-    instructionButton: 'Інструкція', instructionTitle: 'Як вести щоденник', instructionBack: 'До меню',
+    instructionButton: 'Інструкція', instructionTitle: 'Інструкція з ведення духовного щоденника', instructionBack: 'До меню',
     observationsButton: 'Мої спостереження', observationsTitle: 'Мої спостереження', observationsBack: 'До меню',
     observationsIntro: 'Вільні нотатки про переживання, ситуації, усвідомлення та напрями внутрішньої роботи.',
     observationTextLabel: 'Текст спостереження', observationPlaceholder: 'Що сталося? Що я відчув? Що я усвідомив? Над чим хочу попрацювати?',
@@ -125,7 +125,7 @@ const uiCopy = Object.freeze({
     htmlLang: 'en', dateLocale: 'en-US', title: 'Spiritual Journal', subtitle: 'Self-Inquiry', begin: 'Begin',
     firstStep: 'The first step begins with one quiet breath.', menuBack: 'Back to home screen', backToMenu: 'Back to menu', menuTitle: 'Journal',
     continueEntries: 'Continue entry', editPrevious: 'View journal', selectDate: 'Choose a date',
-    instructionButton: 'Guide', instructionTitle: 'How to keep the journal', instructionBack: 'Back to Menu',
+    instructionButton: 'Guide', instructionTitle: 'Guide to Keeping a Spiritual Journal', instructionBack: 'Back to Menu',
     observationsButton: 'My observations', observationsTitle: 'My observations', observationsBack: 'Back to Menu',
     observationsIntro: 'Free notes about experiences, situations, insights, and directions for inner work.',
     observationTextLabel: 'Observation text', observationPlaceholder: 'What happened? What did I feel? What did I realise? What would I like to work on?',
@@ -187,153 +187,204 @@ const instructionContent = Object.freeze({
     {
       heading: 'Главная цель',
       paragraphs: [
-        'Этот дневник нужен не для механического подсчёта нарушений и не для получения идеальной статистики. Его цель — развивать осознанность: постепенно замечать привычные реакции и учиться выбирать, как отвечать на происходящее.',
-        'В ситуации может возникнуть раздражение, гнев, обида, зависть, гордость, нетерпение, осуждение или другое тяжёлое состояние. Сначала важно заметить реакцию и честно признать её, затем отметить проявление в подходящем разделе. Наблюдение и запись помогают выйти из автоматизма: в похожий следующий раз знакомую реакцию легче распознать раньше и не обязательно следовать ей.',
-        'Мы не боремся с самим фактом возникновения негативного чувства и не подавляем его. Мы учимся замечать его, понимать собственную реакцию и выбирать дальнейшие действия. Это дневник самоанализа, а не самоосуждения.',
+        'Духовный дневник — это инструмент самоанализа и внутренней работы над собой. Он помогает лучше понимать себя, замечать свои мысли, желания, эмоции и поступки, выявлять то, что вызывает негативные эмоции, внутреннее напряжение и неудовлетворённость, а также постепенно изменять свои привычные реакции и модели поведения.',
+        'Наблюдая за собой каждый день, ты учишься лучше понимать причины собственных поступков, замечать то, что раньше оставалось незамеченным, и постепенно переходить от автоматических реакций к осознанному выбору.',
       ],
     },
     {
-      heading: 'Семь направлений',
-      paragraphs: ['Семь направлений сохраняют структуру дневника и помогают видеть разные стороны повседневной жизни:'],
+      heading: 'Пять основных направлений внутренней работы',
+      paragraphs: ['В основе духовного развития лежит работа над пятью внутренними препятствиями:'],
       listType: 'ol',
       list: [
-        'Ненасилие: наблюдение проявлений в мыслях, словах и поступках.',
-        'Правдивость: ложь, обман, лицемерие, мошенничество и незаконное обогащение.',
-        'Целомудрие: внимание к мыслям, словам и поступкам.',
-        'Любовь ко всем существам: наблюдение гордости знаниями, богатством и статусом.',
-        'Вегетарианское питание: вопрос «Соблюдал ли я сегодня принцип вегетарианского питания?» с ответом Да или Нет.',
-        'Бескорыстное служение: вопрос «Совершал ли я сегодня бескорыстное служение?» с ответом Да или Нет.',
-        'Время медитации: отдельный учёт времени медитации на внутренний свет и внутренний звук, если человеку доступна такая практика; иначе можно медитировать на то, что близко и соответствует его духовному пути.',
+        'Похоть — чрезмерная власть чувственных желаний над человеком.',
+        'Жадность — стремление постоянно приобретать, обладать и получать больше.',
+        'Гнев — внутреннее раздражение, неприязнь, злость и враждебность.',
+        'Привязанность — зависимость от людей, вещей, обстоятельств и собственных ожиданий.',
+        'Эго — чрезмерная сосредоточенность на собственном «я», гордость, самолюбие и стремление ставить себя выше других.',
+      ],
+      afterList: ['Эти пять направлений связаны между собой и могут проявляться в повседневных мыслях, чувствах, словах и поступках. Задача практики — научиться замечать их проявления и постепенно освобождаться от их влияния.'],
+    },
+    {
+      heading: 'Семь направлений ежедневного наблюдения',
+      paragraphs: ['Дневник разделён на семь блоков. Каждый из них помогает обратить внимание на определённую сторону повседневной жизни и внутренней работы.'],
+      listType: 'ol',
+      list: [
+        'Ненасилие. Наблюдай за проявлениями агрессии, раздражения и причинением вреда другим существам — мыслями, словами или поступками.',
+        'Правдивость. Обращай внимание на честность с собой и окружающими, замечай случаи лжи, самообмана и искажения правды.',
+        'Целомудрие. Наблюдай за своими чувственными желаниями и тем, насколько они управляют твоими мыслями и поведением.',
+        'Любовь ко всем существам. Замечай проявления доброжелательности, сострадания, терпимости и уважения к другим.',
+        'Вегетарианское питание. Отмечай, придерживался ли ты этого принципа в течение дня.',
+        'Бескорыстное служение. Обращай внимание на возможности помогать другим без ожидания награды или личной выгоды.',
+        'Время медитации. Записывай продолжительность своей практики внутреннего сосредоточения и духовного развития.',
       ],
     },
     {
-      heading: 'В течение дня',
+      heading: 'Дисциплина и регулярность',
       paragraphs: [
-        'Цифровой формат позволяет отмечать замеченное сразу: кнопка «+» в нужном пункте помогает не откладывать запись до вечера. Это снижает риск забыть ситуацию, точнее показывает повторяющиеся реакции, помогает прервать автоматизм и вернуть внимание к собственному состоянию.',
-        'В конце дня полезно спокойно просмотреть записи, вспомнить упущенное и при необходимости дополнить их. Мгновенная фиксация — особенность цифровой версии приложения, а не требование первоначальной методики.',
+        'Ведение дневника требует честности и последовательности. Старайся делать записи ежедневно, не откладывая их на потом.',
+        'Записи за прошедшие дни не следует исправлять или заполнять задним числом. Важно сохранять честную картину своей практики, такой, какой она была на самом деле.',
+        'Количество пропусков за месяц помогает увидеть уровень собственной дисциплины, устойчивость намерения и готовность регулярно работать над собой.',
+        'Никто не оценивает тебя и не требует отчёта. Ты ведёшь этот дневник для себя и отвечаешь только перед собой. Здесь нет наказаний за пропуски или неудачные дни. Есть возможность увидеть реальное положение дел и продолжить работу над собой.',
       ],
     },
     {
-      heading: 'Честность и работа над собой',
+      heading: 'Осознанность и постепенные изменения',
       paragraphs: [
-        'Пусть дневник честно отражает внутреннее состояние. Не нужно ругать себя, оправдываться или подгонять записи под желаемый результат. Важнее увидеть слабое место, понять его причины и постепенно работать над изменением.',
-        'Раздел «Мои наблюдения» остаётся свободным пространством для переживаний, ситуаций, положительных открытий и намерений. Он не обязателен, не связан с подсчётами и не участвует в аналитике.',
+        'Не стремись к мгновенному совершенству. Внутренняя работа требует времени, терпения и искреннего отношения к себе.',
+        'Старайся не просто отмечать события, но и понимать, почему ты поступил именно так, что повлияло на твои мысли и чувства, какие реакции повторяются и что можно изменить в следующий раз.',
+        'Главное — не осуждать себя, а учиться наблюдать, понимать и делать осознанный выбор.',
+        'Постепенно регулярный самоанализ помогает лучше узнавать себя, укреплять внутреннюю дисциплину и менять привычные модели поведения.',
       ],
     },
     {
-      heading: 'Источники методики',
+      heading: 'Источники и основа методики',
       paragraphs: [
-        'Духовные принципы и подход к самоанализу, на которых основан дневник, связаны с трудами и наставлениями Сант Кирпал Сингха. Интерфейс, месячная аналитика, цифровые заметки и мгновенная фиксация — самостоятельная разработка приложения; оно не является продуктом духовного движения и не предполагает личного одобрения Сант Кирпал Сингха.',
-        'Для первоисточников можно обратиться к следующим проверенным материалам:',
+        'Методика ведения дневника основана на духовных беседах, наставлениях и принципах самоанализа, изложенных Сант Кирпал Сингхом. Приложение создано для того, чтобы сделать эту практику доступнее и удобнее в повседневной жизни.',
+        'В качестве источников использованы:',
       ],
       links: [
-        { label: 'On Keeping the Diary — Circular Letter, 19 октября 1968 года', url: 'https://kirpalsingh-mission.org/uom/en/library/sant-kirpal-singh-circular-letters/on-keeping-the-diary/' },
-        { label: 'Importance of Keeping the Diary — The Teachings of Kirpal Singh, Vol. II', url: 'https://kirpalsingh-mission.org/uom/en/teaching/ethical-life/importance-of-keeping-the-diary/' },
-        { label: 'How to Do Your Diary — The Teachings of Kirpal Singh, Vol. II', url: 'https://ruhanisatsangusa.org/pdf/Volume2-Self-Introspection.pdf' },
+        { label: 'On Keeping the Diary — беседа от 19 октября 1968 года', url: 'https://kirpalsingh-mission.org/uom/en/library/sant-kirpal-singh-circular-letters/on-keeping-the-diary/' },
+        { label: 'The Teachings of Kirpal Singh, Volume II: Self-Introspection & Meditation — глава How to Do Your Diary', url: 'https://ruhanisatsangusa.org/pdf/Volume2-Self-Introspection.pdf' },
+        { label: 'Self-Introspection Diary', url: 'https://kirpalsingh-teachings.org/images/booklets/Diary_engl.pdf' },
         { label: 'On Keeping the Diary — беседа 1 ноября 1973 года', url: 'https://ruhanisatsangusa.org/ondiary.htm' },
       ],
+      afterLinks: ['Цифровая структура дневника, его блоки, система записей и аналитические инструменты являются реализацией данного приложения. Они предназначены для удобства ежедневной практики и не должны восприниматься как отдельные цифровые предписания Сант Кирпал Сингха.'],
     },
   ],
   uk: [
     {
       heading: 'Головна мета',
       paragraphs: [
-        'Цей щоденник потрібен не для механічного підрахунку порушень і не для досягнення ідеальної статистики. Його мета — розвивати усвідомленість: поступово помічати звичні реакції та вчитися обирати, як відповідати на те, що відбувається.',
-        'У ситуації можуть виникати роздратування, гнів, образа, заздрість, гордість, нетерпіння, осудження або інший важкий стан. Спершу важливо помітити реакцію й чесно її визнати, а потім зафіксувати прояв у відповідному розділі. Спостереження та запис допомагають вийти з автоматизму: наступного разу знайому реакцію легше розпізнати раніше й не обов’язково їй слідувати.',
-        'Ми не боремося із самим фактом виникнення негативного почуття і не придушуємо його. Ми вчимося помічати його, розуміти власну реакцію та обирати подальші дії. Це щоденник самоаналізу, а не самоосуду.',
+        'Духовний щоденник — це інструмент самоаналізу та внутрішньої роботи над собою. Він допомагає краще розуміти себе, помічати свої думки, бажання, емоції та вчинки, виявляти те, що викликає негативні емоції, внутрішнє напруження й незадоволеність, а також поступово змінювати свої звичні реакції та моделі поведінки.',
+        'Спостерігаючи за собою щодня, ти вчишся краще розуміти причини власних вчинків, помічати те, що раніше залишалося непоміченим, і поступово переходити від автоматичних реакцій до усвідомленого вибору.',
       ],
     },
     {
-      heading: 'Сім напрямів',
-      paragraphs: ['Сім напрямів зберігають структуру щоденника й допомагають бачити різні сторони повсякденного життя:'],
+      heading: 'П’ять основних напрямів внутрішньої роботи',
+      paragraphs: ['В основі духовного розвитку лежить робота над п’ятьма внутрішніми перешкодами:'],
       listType: 'ol',
       list: [
-        'Ненасильство: спостереження проявів у думках, словах і вчинках.',
-        'Правдивість: неправда, обман, лицемірство, шахрайство та незаконне збагачення.',
-        'Цнотливість: увага до думок, слів і вчинків.',
-        'Любов до всіх істот: спостереження гордості знаннями, багатством і статусом.',
-        'Вегетарианське харчування: питання «Чи дотримувався я сьогодні принципу вегетарианського харчування?» з відповіддю Так або Ні.',
-        'Безкорисливе служіння: питання «Чи здійснював я сьогодні безкорисливе служіння?» з відповіддю Так або Ні.',
-        'Час медитації: окремий облік часу медитації на внутрішнє світло й внутрішній звук, якщо така практика доступна; інакше можна медитувати на те, що близьке й відповідає власному духовному шляху.',
+        'Похіть — надмірна влада чуттєвих бажань над людиною.',
+        'Жадібність — прагнення постійно набувати, володіти й отримувати більше.',
+        'Гнів — внутрішнє роздратування, неприязнь, злість і ворожість.',
+        'Прив’язаність — залежність від людей, речей, обставин і власних очікувань.',
+        'Его — надмірна зосередженість на власному «я», гордість, самолюбство й прагнення ставити себе вище за інших.',
+      ],
+      afterList: ['Ці п’ять напрямів пов’язані між собою й можуть проявлятися в повсякденних думках, почуттях, словах і вчинках. Завдання практики — навчитися помічати їхні прояви та поступово звільнятися від їхнього впливу.'],
+    },
+    {
+      heading: 'Сім напрямів щоденного спостереження',
+      paragraphs: ['Щоденник поділено на сім блоків. Кожен із них допомагає звернути увагу на певний бік повсякденного життя та внутрішньої роботи.'],
+      listType: 'ol',
+      list: [
+        'Ненасильство. Спостерігай за проявами агресії, роздратування та завданням шкоди іншим істотам — думками, словами чи вчинками.',
+        'Правдивість. Звертай увагу на чесність із собою та іншими, помічай випадки неправди, самообману й викривлення правди.',
+        'Цнотливість. Спостерігай за своїми чуттєвими бажаннями та за тим, наскільки вони керують твоїми думками й поведінкою.',
+        'Любов до всіх істот. Помічай прояви доброзичливості, співчуття, терпимості та поваги до інших.',
+        'Вегетарианське харчування. Відзначай, чи дотримувався ти цього принципу протягом дня.',
+        'Безкорисливе служіння. Звертай увагу на можливості допомагати іншим без очікування винагороди або особистої вигоди.',
+        'Час медитації. Записуй тривалість своєї практики внутрішнього зосередження та духовного розвитку.',
       ],
     },
     {
-      heading: 'Протягом дня',
+      heading: 'Дисципліна й регулярність',
       paragraphs: [
-        'Цифровий формат дозволяє позначати помічене відразу: кнопка «+» у потрібному пункті допомагає не відкладати запис до вечора. Це зменшує ризик забути ситуацію, точніше показує повторювані реакції, допомагає перервати автоматизм і повернути увагу до власного стану.',
-        'Наприкінці дня корисно спокійно переглянути записи, згадати пропущене й за потреби доповнити їх. Миттєва фіксація — особливість цифрової версії застосунку, а не вимога первісної методики.',
+        'Ведення щоденника потребує чесності й послідовності. Намагайся робити записи щодня, не відкладаючи їх на потім.',
+        'Записи за минулі дні не слід виправляти або заповнювати заднім числом. Важливо зберігати чесну картину своєї практики такою, якою вона була насправді.',
+        'Кількість пропусків за місяць допомагає побачити рівень власної дисципліни, стійкість наміру й готовність регулярно працювати над собою.',
+        'Ніхто тебе не оцінює і не вимагає звіту. Ти ведеш цей щоденник для себе й відповідаєш лише перед собою. Тут немає покарань за пропуски або невдалі дні. Є можливість побачити реальний стан справ і продовжити роботу над собою.',
       ],
     },
     {
-      heading: 'Чесність і робота над собою',
+      heading: 'Усвідомленість і поступові зміни',
       paragraphs: [
-        'Нехай щоденник чесно відображає внутрішній стан. Не потрібно сварити себе, виправдовуватися або підганяти записи під бажаний результат. Важливіше побачити слабке місце, зрозуміти його причини й поступово працювати над зміною.',
-        'Розділ «Мої спостереження» лишається вільним простором для переживань, ситуацій, позитивних відкриттів і намірів. Він не обов’язковий, не пов’язаний із підрахунками та не бере участі в аналітиці.',
+        'Не прагни миттєвої досконалості. Внутрішня робота потребує часу, терпіння та щирого ставлення до себе.',
+        'Намагайся не просто відзначати події, а й розуміти, чому ти вчинив саме так, що вплинуло на твої думки та почуття, які реакції повторюються і що можна змінити наступного разу.',
+        'Головне — не засуджувати себе, а вчитися спостерігати, розуміти й робити усвідомлений вибір.',
+        'Поступово регулярний самоаналіз допомагає краще пізнавати себе, зміцнювати внутрішню дисципліну та змінювати звичні моделі поведінки.',
       ],
     },
     {
-      heading: 'Джерела методики',
+      heading: 'Джерела й основа методики',
       paragraphs: [
-        'Духовні принципи й підхід до самоаналізу, на яких ґрунтується щоденник, пов’язані з працями та настановами Сант Кирпал Сінгха. Інтерфейс, місячна аналітика, цифрові нотатки й миттєва фіксація — самостійна розробка застосунку; він не є продуктом духовного руху й не передбачає особистого схвалення Сант Кирпал Сінгха.',
-        'Для першоджерел можна звернутися до таких перевірених матеріалів:',
+        'Методика ведення щоденника ґрунтується на духовних бесідах, настановах і принципах самоаналізу, викладених Сант Кирпал Сінгхом. Застосунок створено для того, щоб зробити цю практику доступнішою та зручнішою у повсякденному житті.',
+        'Як джерела використано:',
       ],
       links: [
-        { label: 'On Keeping the Diary — Circular Letter, 19 жовтня 1968 року', url: 'https://kirpalsingh-mission.org/uom/en/library/sant-kirpal-singh-circular-letters/on-keeping-the-diary/' },
-        { label: 'Importance of Keeping the Diary — The Teachings of Kirpal Singh, Vol. II', url: 'https://kirpalsingh-mission.org/uom/en/teaching/ethical-life/importance-of-keeping-the-diary/' },
-        { label: 'How to Do Your Diary — The Teachings of Kirpal Singh, Vol. II', url: 'https://ruhanisatsangusa.org/pdf/Volume2-Self-Introspection.pdf' },
+        { label: 'On Keeping the Diary — бесіда від 19 жовтня 1968 року', url: 'https://kirpalsingh-mission.org/uom/en/library/sant-kirpal-singh-circular-letters/on-keeping-the-diary/' },
+        { label: 'The Teachings of Kirpal Singh, Volume II: Self-Introspection & Meditation — розділ How to Do Your Diary', url: 'https://ruhanisatsangusa.org/pdf/Volume2-Self-Introspection.pdf' },
+        { label: 'Self-Introspection Diary', url: 'https://kirpalsingh-teachings.org/images/booklets/Diary_engl.pdf' },
         { label: 'On Keeping the Diary — бесіда 1 листопада 1973 року', url: 'https://ruhanisatsangusa.org/ondiary.htm' },
       ],
+      afterLinks: ['Цифрова структура щоденника, його блоки, система записів і аналітичні інструменти є реалізацією цього застосунку. Вони призначені для зручності щоденної практики й не повинні сприйматися як окремі цифрові приписи Сант Кирпал Сінгха.'],
     },
   ],
   en: [
     {
-      heading: 'The purpose of the journal',
+      heading: 'The main purpose',
       paragraphs: [
-        'This journal is not for mechanically counting faults or perfect statistics. Its purpose is awareness: noticing habitual reactions and choosing how to respond.',
-        'A situation may bring irritation, anger, resentment, envy, pride, impatience, judgement, or another difficult state. First, notice it honestly; then record the manifestation in the relevant section. Observation and recording interrupt automatic behaviour: next time, the reaction can be noticed earlier and need not be followed.',
-        'We do not fight the very fact that a negative feeling arises, and we do not suppress it. We learn to notice it, understand our own reaction, and choose what to do next. This is a journal for self-inquiry, not self-condemnation.',
+        'A spiritual journal is a tool for self-analysis and inner work. It helps you understand yourself better, notice your thoughts, desires, emotions, and actions, identify what causes negative emotions, inner tension, and dissatisfaction, and gradually change habitual reactions and patterns of behaviour.',
+        'By observing yourself every day, you learn to understand the reasons for your actions more clearly, notice what once went unnoticed, and gradually move from automatic reactions to conscious choice.',
       ],
     },
     {
-      heading: 'Seven areas',
-      paragraphs: ['The seven areas preserve the journal’s structure and help reveal different sides of daily life:'],
+      heading: 'Five main areas of inner work',
+      paragraphs: ['Spiritual development is based on working with five inner obstacles:'],
       listType: 'ol',
       list: [
-        'Nonviolence: noticing manifestations in thoughts, words, and actions.',
-        'Truthfulness: untruth, deception, hypocrisy, fraud, and unlawful enrichment.',
-        'Chastity: attention to thoughts, words, and actions.',
-        'Love for all beings: noticing pride in knowledge, wealth, and status.',
-        'Vegetarian diet: the question “Did I observe the vegetarian principle today?” with a Yes or No answer.',
-        'Selfless service: the question “Did I perform selfless service today?” with a Yes or No answer.',
-        'Meditation time: separate records for inner light and inner sound where that practice is available; otherwise, meditate in a way that accords with your spiritual path.',
+        'Lust — the excessive power of sensual desires over a person.',
+        'Greed — the urge to constantly acquire, possess, and receive more.',
+        'Anger — inner irritation, dislike, rage, and hostility.',
+        'Attachment — dependence on people, things, circumstances, and personal expectations.',
+        'Ego — excessive preoccupation with one’s own self, pride, self-importance, and the wish to place oneself above others.',
+      ],
+      afterList: ['These five areas are interconnected and can appear in everyday thoughts, feelings, words, and actions. The task of the practice is to learn to notice their manifestations and gradually free oneself from their influence.'],
+    },
+    {
+      heading: 'Seven areas of daily observation',
+      paragraphs: ['The journal is divided into seven blocks. Each one helps you attend to a particular aspect of daily life and inner work.'],
+      listType: 'ol',
+      list: [
+        'Nonviolence. Observe manifestations of aggression, irritation, and harm toward other beings in thoughts, words, or actions.',
+        'Truthfulness. Pay attention to honesty with yourself and others; notice instances of lies, self-deception, and distortion of truth.',
+        'Chastity. Observe sensual desires and the degree to which they govern your thoughts and behaviour.',
+        'Love for all beings. Notice expressions of goodwill, compassion, tolerance, and respect for others.',
+        'Vegetarian diet. Note whether you followed this principle during the day.',
+        'Selfless service. Notice opportunities to help others without expecting reward or personal benefit.',
+        'Meditation time. Record the duration of your practice of inner concentration and spiritual development.',
       ],
     },
     {
-      heading: 'During the day',
+      heading: 'Discipline and regularity',
       paragraphs: [
-        'The digital format lets a person record what is noticed straight away: the “+” button means a note need not wait until evening. This reduces forgetfulness, reveals recurring reactions, interrupts automatic behaviour, and returns attention inward.',
-        'At day’s end, review entries quietly, recall what was missed, and add to them if needed. Immediate recording is a feature of this digital application, not a requirement of the original method.',
+        'Keeping a journal requires honesty and consistency. Try to make entries every day without postponing them.',
+        'Entries for past days should not be corrected or completed retroactively. It is important to preserve an honest picture of your practice as it truly was.',
+        'The number of missed days during a month helps you see the level of your own discipline, the steadiness of your intention, and your readiness to work on yourself regularly.',
+        'No one is judging you or asking for a report. You keep this journal for yourself and are answerable only to yourself. There are no punishments for missed or difficult days. There is an opportunity to see the actual state of things and continue your inner work.',
       ],
     },
     {
-      heading: 'Honesty and inner work',
+      heading: 'Awareness and gradual change',
       paragraphs: [
-        'Let the journal reflect the inner state honestly. There is no need to blame yourself, justify yourself, or adjust entries to obtain a desired result. It is more useful to see a weak point, understand its causes, and work gradually toward change.',
-        'The “My observations” section is a free space for experiences, situations, positive discoveries, and intentions. It is optional, unrelated to counts, and never contributes to analytics.',
+        'Do not seek instant perfection. Inner work requires time, patience, and a sincere attitude toward yourself.',
+        'Try not only to note events, but also to understand why you acted as you did, what influenced your thoughts and feelings, which reactions recur, and what can be changed next time.',
+        'The main thing is not to condemn yourself, but to learn to observe, understand, and make a conscious choice.',
+        'Over time, regular self-analysis helps you know yourself better, strengthen inner discipline, and change habitual patterns of behaviour.',
       ],
     },
     {
-      heading: 'Sources for the method',
+      heading: 'Sources and basis of the method',
       paragraphs: [
-        'The spiritual principles and approach to self-introspection underlying this journal draw on the writings and guidance of Sant Kirpal Singh. The interface, monthly analytics, digital notes, and immediate recording are independent features of this application; it is not a product of a spiritual movement and does not imply Sant Kirpal Singh’s personal approval.',
-        'The following verified primary-source materials provide further reading:',
+        'The method of keeping the journal is based on the spiritual talks, guidance, and principles of self-analysis presented by Sant Kirpal Singh. The application was created to make this practice more accessible and convenient in everyday life.',
+        'The following sources were used:',
       ],
       links: [
-        { label: 'On Keeping the Diary — Circular Letter, 19 October 1968', url: 'https://kirpalsingh-mission.org/uom/en/library/sant-kirpal-singh-circular-letters/on-keeping-the-diary/' },
-        { label: 'Importance of Keeping the Diary — The Teachings of Kirpal Singh, Vol. II', url: 'https://kirpalsingh-mission.org/uom/en/teaching/ethical-life/importance-of-keeping-the-diary/' },
-        { label: 'How to Do Your Diary — The Teachings of Kirpal Singh, Vol. II', url: 'https://ruhanisatsangusa.org/pdf/Volume2-Self-Introspection.pdf' },
+        { label: 'On Keeping the Diary — talk of 19 October 1968', url: 'https://kirpalsingh-mission.org/uom/en/library/sant-kirpal-singh-circular-letters/on-keeping-the-diary/' },
+        { label: 'The Teachings of Kirpal Singh, Volume II: Self-Introspection & Meditation — chapter How to Do Your Diary', url: 'https://ruhanisatsangusa.org/pdf/Volume2-Self-Introspection.pdf' },
+        { label: 'Self-Introspection Diary', url: 'https://kirpalsingh-teachings.org/images/booklets/Diary_engl.pdf' },
         { label: 'On Keeping the Diary — talk of 1 November 1973', url: 'https://ruhanisatsangusa.org/ondiary.htm' },
       ],
+      afterLinks: ['The digital structure of the journal, its blocks, record system, and analytical tools are an implementation of this application. They are intended to support daily practice and should not be understood as separate digital prescriptions of Sant Kirpal Singh.'],
     },
   ],
 });
@@ -543,58 +594,6 @@ const CHASTITY_FIELDS = ['thoughts', 'words', 'actions'];
 const LOVE_ALL_BEINGS_FIELDS = ['knowledgePride', 'wealthPride', 'statusPride'];
 const DAILY_CHOICE_FIELDS = ['vegetarianFood', 'selflessService'];
 const MEDITATION_FIELDS = ['meditationInnerLight', 'meditationInnerSound'];
-const DEMO_HISTORY_MONTH = '2026-09';
-
-function createDemoHistoryEntries() {
-  const emptyDays = new Set([4, 9, 15, 22, 29]);
-  const entries = {};
-
-  for (let day = 1; day <= 30; day += 1) {
-    if (emptyDays.has(day)) continue;
-
-    const entry = {};
-    if (day % 3 !== 0) {
-      entry.nonviolence = {
-        thoughts: day % 4,
-        words: (day + 1) % 3,
-        ...(day % 2 === 0 ? { actions: (day + 2) % 3 } : {}),
-      };
-    }
-    if (day % 4 !== 0) {
-      entry.truthfulness = {
-        untruth: (day + 1) % 3,
-        deception: day % 2,
-        ...(day % 2 === 0 ? { hypocrisy: (day + 2) % 2 } : {}),
-        ...(day % 5 === 0 ? { fraud: 0 } : {}),
-        ...(day % 3 === 0 ? { unlawfulEnrichment: 0 } : {}),
-      };
-    }
-    if (day % 5 !== 0) {
-      entry.chastity = {
-        thoughts: day % 2,
-        ...(day % 2 === 0 ? { words: (day + 1) % 2 } : {}),
-        ...(day % 3 === 0 ? { actions: 0 } : {}),
-      };
-    }
-    if (day % 4 !== 1) {
-      entry.loveAllBeings = {
-        knowledgePride: day % 3,
-        ...(day % 2 === 1 ? { wealthPride: 0 } : {}),
-        ...(day % 3 === 1 ? { statusPride: 1 } : {}),
-      };
-    }
-    if (day % 2 === 0) entry.vegetarianFood = day % 6 === 0 ? 'yes' : 'no';
-    if (day % 3 === 0) entry.selflessService = day % 2 === 0 ? 'yes' : 'no';
-    if (day % 2 === 0) entry.meditationInnerLight = day % 5;
-    if (day % 3 !== 0) entry.meditationInnerSound = (day + 1) % 4;
-
-    entries[`${DEMO_HISTORY_MONTH}-${String(day).padStart(2, '0')}`] = entry;
-  }
-
-  return Object.freeze(entries);
-}
-
-const DEMO_HISTORY_ENTRIES = createDemoHistoryEntries();
 
 function normalizeLanguage(value) {
   return typeof value === 'string' ? value.toLowerCase().split('-')[0] : null;
@@ -730,6 +729,13 @@ function updateInstructionScreen() {
       });
       sectionElement.append(list);
     }
+    if (section.afterList) {
+      section.afterList.forEach((text) => {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = text;
+        sectionElement.append(paragraph);
+      });
+    }
     if (section.links) {
       const list = document.createElement('ul');
       section.links.forEach((source) => {
@@ -743,6 +749,13 @@ function updateInstructionScreen() {
         list.append(item);
       });
       sectionElement.append(list);
+    }
+    if (section.afterLinks) {
+      section.afterLinks.forEach((text) => {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = text;
+        sectionElement.append(paragraph);
+      });
     }
     instructionScreenContent.append(sectionElement);
   });
@@ -1221,17 +1234,12 @@ function getHistoryMonthKeys() {
   const savedMonths = Object.keys(journalData?.entries || {})
     .filter((dateKey) => /^\d{4}-\d{2}-\d{2}$/.test(dateKey))
     .map((dateKey) => dateKey.slice(0, 7));
-  return [...new Set([getTodayKey().slice(0, 7), DEMO_HISTORY_MONTH, ...savedMonths])]
+  return [...new Set([getTodayKey().slice(0, 7), ...savedMonths])]
     .sort((first, second) => second.localeCompare(first));
 }
 
 function getHistoryEntry(dateKey) {
-  const savedEntry = getEntry(dateKey);
-  if (savedEntry) return savedEntry;
-  if (dateKey.startsWith(`${DEMO_HISTORY_MONTH}-`) && DEMO_HISTORY_MONTH !== getTodayKey().slice(0, 7)) {
-    return DEMO_HISTORY_ENTRIES[dateKey] || null;
-  }
-  return null;
+  return getEntry(dateKey);
 }
 
 function getHistoryDateKeys(monthKey) {
