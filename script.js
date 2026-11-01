@@ -7,7 +7,7 @@ const uiCopy = Object.freeze({
     htmlLang: 'ru', dateLocale: 'ru-RU', title: 'Духовный дневник', subtitle: 'Самоисследование', begin: 'Начать',
     firstStep: 'Первый шаг начинается с тихого вдоха.', menuBack: 'На главный экран', backToMenu: 'К меню', menuTitle: 'Дневник',
     continueEntries: 'Продолжить запись', editPrevious: 'Просмотр дневника', selectDate: 'Выберите дату',
-    instructionButton: 'Инструкция', instructionTitle: 'Инструкция по ведению духовного дневника', instructionBack: 'К меню',
+    instructionButton: 'Инструкция', instructionTitle: 'Инструкция по ведению духовного дневника', instructionBack: 'К меню', instructionMenuButton: 'Назад в главное меню',
     observationsButton: 'Мои наблюдения', observationsTitle: 'Мои наблюдения', observationsBack: 'К меню',
     observationsIntro: 'Свободные заметки о переживаниях, ситуациях, осознаниях и направлениях внутренней работы.',
     observationTextLabel: 'Текст наблюдения', observationPlaceholder: 'Что произошло? Что я почувствовал? Что я осознал? Над чем хочу поработать?',
@@ -56,6 +56,7 @@ const uiCopy = Object.freeze({
     },
     decreaseCounter: 'Уменьшить количество нарушений: {label}', increaseCounter: 'Увеличить количество нарушений: {label}',
     decreaseMeditation: 'Уменьшить время медитации: {label}', increaseMeditation: 'Увеличить время медитации: {label}',
+    blocksProgressHeading: 'РАЗДЕЛЫ / ЗАПОЛНЕНО',
     blocks: {
       nonviolence: 'Ненасилие', truthfulness: 'Правдивость', chastity: 'Целомудрие',
       loveHumility: 'Любовь ко всем существам', vegetarianDiet: 'Вегетарианское питание',
@@ -66,7 +67,7 @@ const uiCopy = Object.freeze({
     htmlLang: 'uk', dateLocale: 'uk-UA', title: 'Духовний щоденник', subtitle: 'Самодослідження', begin: 'Почати',
     firstStep: 'Перший крок починається з тихого вдиху.', menuBack: 'На головний екран', backToMenu: 'До меню', menuTitle: 'Щоденник',
     continueEntries: 'Продовжити запис', editPrevious: 'Перегляд щоденника', selectDate: 'Оберіть дату',
-    instructionButton: 'Інструкція', instructionTitle: 'Інструкція з ведення духовного щоденника', instructionBack: 'До меню',
+    instructionButton: 'Інструкція', instructionTitle: 'Інструкція з ведення духовного щоденника', instructionBack: 'До меню', instructionMenuButton: 'До головного меню',
     observationsButton: 'Мої спостереження', observationsTitle: 'Мої спостереження', observationsBack: 'До меню',
     observationsIntro: 'Вільні нотатки про переживання, ситуації, усвідомлення та напрями внутрішньої роботи.',
     observationTextLabel: 'Текст спостереження', observationPlaceholder: 'Що сталося? Що я відчув? Що я усвідомив? Над чим хочу попрацювати?',
@@ -115,6 +116,7 @@ const uiCopy = Object.freeze({
     },
     decreaseCounter: 'Зменшити кількість порушень: {label}', increaseCounter: 'Збільшити кількість порушень: {label}',
     decreaseMeditation: 'Зменшити час медитації: {label}', increaseMeditation: 'Збільшити час медитації: {label}',
+    blocksProgressHeading: 'РОЗДІЛИ / ЗАПОВНЕНО',
     blocks: {
       nonviolence: 'Ненасильство', truthfulness: 'Правдивість', chastity: 'Цнотливість',
       loveHumility: 'Любов до всіх істот', vegetarianDiet: 'Вегетарианське харчування',
@@ -125,7 +127,7 @@ const uiCopy = Object.freeze({
     htmlLang: 'en', dateLocale: 'en-US', title: 'Spiritual Journal', subtitle: 'Self-Inquiry', begin: 'Begin',
     firstStep: 'The first step begins with one quiet breath.', menuBack: 'Back to home screen', backToMenu: 'Back to menu', menuTitle: 'Journal',
     continueEntries: 'Continue entry', editPrevious: 'View journal', selectDate: 'Choose a date',
-    instructionButton: 'Guide', instructionTitle: 'Guide to Keeping a Spiritual Journal', instructionBack: 'Back to Menu',
+    instructionButton: 'Guide', instructionTitle: 'Guide to Keeping a Spiritual Journal', instructionBack: 'Back to Menu', instructionMenuButton: 'Back to main menu',
     observationsButton: 'My observations', observationsTitle: 'My observations', observationsBack: 'Back to Menu',
     observationsIntro: 'Free notes about experiences, situations, insights, and directions for inner work.',
     observationTextLabel: 'Observation text', observationPlaceholder: 'What happened? What did I feel? What did I realise? What would I like to work on?',
@@ -174,6 +176,7 @@ const uiCopy = Object.freeze({
     },
     decreaseCounter: 'Decrease violations: {label}', increaseCounter: 'Increase violations: {label}',
     decreaseMeditation: 'Decrease meditation time: {label}', increaseMeditation: 'Increase meditation time: {label}',
+    blocksProgressHeading: 'SECTIONS / COMPLETED',
     blocks: {
       nonviolence: 'Nonviolence', truthfulness: 'Truthfulness', chastity: 'Chastity',
       loveHumility: 'Love for all beings', vegetarianDiet: 'Vegetarian diet',
@@ -428,6 +431,7 @@ const instructionBack = document.querySelector('#instruction-back span');
 const instructionKicker = document.querySelector('#instruction-kicker');
 const instructionTitle = document.querySelector('#instruction-title');
 const instructionScreenContent = document.querySelector('#instruction-content');
+const instructionMenuButton = document.querySelector('#instruction-menu-button');
 const observationsButton = document.querySelector('#observations-button');
 const observationsBack = document.querySelector('#observations-back span');
 const observationsKicker = document.querySelector('#observations-kicker');
@@ -441,6 +445,7 @@ const observationCancel = document.querySelector('#observation-cancel');
 const observationStatus = document.querySelector('#observation-status');
 const observationList = document.querySelector('#observation-list');
 const blocksKicker = document.querySelector('#blocks-kicker');
+const blocksProgressHeading = document.querySelector('#blocks-progress-heading');
 const journalBlockButtons = document.querySelectorAll('[data-journal-block]');
 const blockSelection = document.querySelector('#block-selection');
 const nonviolenceKicker = document.querySelector('#nonviolence-kicker');
@@ -594,6 +599,15 @@ const CHASTITY_FIELDS = ['thoughts', 'words', 'actions'];
 const LOVE_ALL_BEINGS_FIELDS = ['knowledgePride', 'wealthPride', 'statusPride'];
 const DAILY_CHOICE_FIELDS = ['vegetarianFood', 'selflessService'];
 const MEDITATION_FIELDS = ['meditationInnerLight', 'meditationInnerSound'];
+const BLOCK_COMPLETION_CONFIG = Object.freeze({
+  nonviolence: { source: 'nonviolence', fields: NONVIOLENCE_FIELDS, type: 'counter' },
+  truthfulness: { source: 'truthfulness', fields: TRUTHFULNESS_FIELDS, type: 'counter' },
+  chastity: { source: 'chastity', fields: CHASTITY_FIELDS, type: 'counter' },
+  loveHumility: { source: 'loveAllBeings', fields: LOVE_ALL_BEINGS_FIELDS, type: 'counter' },
+  vegetarianDiet: { fields: ['vegetarianFood'], type: 'choice' },
+  selflessService: { fields: ['selflessService'], type: 'choice' },
+  meditationTime: { fields: MEDITATION_FIELDS, type: 'counter' },
+});
 
 function normalizeLanguage(value) {
   return typeof value === 'string' ? value.toLowerCase().split('-')[0] : null;
@@ -707,6 +721,7 @@ function updateInstructionScreen() {
   instructionBack.textContent = copy.instructionBack;
   instructionKicker.textContent = copy.title;
   instructionTitle.textContent = copy.instructionTitle;
+  instructionMenuButton.textContent = copy.instructionMenuButton;
   instructionScreenContent.replaceChildren();
 
   instructionContent[currentLanguage].forEach((section) => {
@@ -902,6 +917,32 @@ function getCounterValue(value) {
   return Number.isInteger(value) && value >= 0 ? value : null;
 }
 
+function getBlockCompletionPercent(blockKey, dateKey = getTodayKey()) {
+  const config = BLOCK_COMPLETION_CONFIG[blockKey];
+  if (!config) return 0;
+
+  const entry = getEntry(dateKey);
+  const completedFields = config.fields.filter((field) => {
+    const value = config.source ? entry?.[config.source]?.[field] : entry?.[field];
+    return config.type === 'choice'
+      ? value === 'yes' || value === 'no'
+      : getCounterValue(value) !== null;
+  }).length;
+
+  return Math.round((completedFields / config.fields.length) * 100);
+}
+
+function updateBlockCompletion() {
+  const copy = uiCopy[currentLanguage];
+  journalBlockButtons.forEach((button) => {
+    const blockKey = button.dataset.journalBlock;
+    const percent = getBlockCompletionPercent(blockKey);
+    const progress = button.querySelector('[data-block-progress]');
+    if (progress) progress.textContent = `${percent}%`;
+    button.setAttribute('aria-label', `${copy.blocks[blockKey]}: ${percent}%`);
+  });
+}
+
 function getNonviolenceCounters(dateKey) {
   const savedCounters = getEntry(dateKey)?.nonviolence;
   return {
@@ -1080,6 +1121,7 @@ function saveNonviolenceCounter(dateKey, field, value) {
 
   try {
     localStorage.setItem(JOURNAL_STORAGE_KEY, JSON.stringify(journalData));
+    updateBlockCompletion();
     return true;
   } catch {
     return false;
@@ -1106,6 +1148,7 @@ function saveTruthfulnessCounter(dateKey, field, value) {
 
   try {
     localStorage.setItem(JOURNAL_STORAGE_KEY, JSON.stringify(journalData));
+    updateBlockCompletion();
     return true;
   } catch {
     return false;
@@ -1132,6 +1175,7 @@ function saveChastityCounter(dateKey, field, value) {
 
   try {
     localStorage.setItem(JOURNAL_STORAGE_KEY, JSON.stringify(journalData));
+    updateBlockCompletion();
     return true;
   } catch {
     return false;
@@ -1158,6 +1202,7 @@ function saveLoveAllBeingsCounter(dateKey, field, value) {
 
   try {
     localStorage.setItem(JOURNAL_STORAGE_KEY, JSON.stringify(journalData));
+    updateBlockCompletion();
     return true;
   } catch {
     return false;
@@ -1181,6 +1226,7 @@ function saveDailyChoice(dateKey, field, value) {
 
   try {
     localStorage.setItem(JOURNAL_STORAGE_KEY, JSON.stringify(journalData));
+    updateBlockCompletion();
     return true;
   } catch {
     return false;
@@ -1204,6 +1250,7 @@ function saveMeditationCounter(dateKey, field, value) {
 
   try {
     localStorage.setItem(JOURNAL_STORAGE_KEY, JSON.stringify(journalData));
+    updateBlockCompletion();
     return true;
   } catch {
     return false;
@@ -1708,6 +1755,7 @@ function updateSaveStatus() {
 }
 
 function updateBlockSelection() {
+  updateBlockCompletion();
   if (!selectedBlock) {
     blockSelection.hidden = true;
     return;
@@ -2014,8 +2062,9 @@ function applyLanguage(language) {
   instructionButton.textContent = `${copy.instructionButton} →`;
   observationsButton.textContent = copy.observationsButton;
   blocksKicker.textContent = copy.title;
+  blocksProgressHeading.textContent = copy.blocksProgressHeading;
   journalBlockButtons.forEach((button) => {
-    button.textContent = copy.blocks[button.dataset.journalBlock];
+    button.querySelector('[data-block-label]').textContent = copy.blocks[button.dataset.journalBlock];
   });
   nonviolenceKicker.textContent = copy.title;
   nonviolenceTitle.textContent = copy.nonviolenceTitle;
@@ -2375,6 +2424,7 @@ startButton.addEventListener('click', () => showScreen('menu'));
 document.querySelector('#menu-back').addEventListener('click', () => showScreen('landing'));
 instructionButton.addEventListener('click', openInstruction);
 document.querySelector('#instruction-back').addEventListener('click', () => showScreen('menu'));
+instructionMenuButton.addEventListener('click', () => showScreen('menu'));
 observationsButton.addEventListener('click', openObservations);
 document.querySelector('#observations-back').addEventListener('click', () => showScreen('menu'));
 observationForm.addEventListener('submit', (event) => {

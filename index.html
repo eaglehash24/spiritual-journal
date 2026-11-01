@@ -68,6 +68,7 @@
         </div>
         <h1 class="journal-heading" id="instruction-title">Как вести дневник</h1>
         <div class="instruction-content" id="instruction-content"></div>
+        <button class="journal-action instruction-menu-button" type="button" id="instruction-menu-button">Назад в главное меню</button>
       </div>
     </section>
 
@@ -96,14 +97,15 @@
       <button class="screen-back" type="button" id="blocks-back">← <span>К меню</span></button>
       <div class="journal-panel blocks-panel">
         <p class="journal-kicker" id="blocks-kicker">Духовный дневник</p>
+        <p class="blocks-progress-heading" id="blocks-progress-heading">РАЗДЕЛЫ / ЗАПОЛНЕНО</p>
         <ul class="journal-block-list">
-          <li><button class="journal-block" type="button" data-journal-block="nonviolence">Ненасилие</button></li>
-          <li><button class="journal-block" type="button" data-journal-block="truthfulness">Правдивость</button></li>
-          <li><button class="journal-block" type="button" data-journal-block="chastity">Целомудрие</button></li>
-          <li><button class="journal-block" type="button" data-journal-block="loveHumility">Любовь ко всем существам</button></li>
-          <li><button class="journal-block" type="button" data-journal-block="vegetarianDiet">Вегетарианское питание</button></li>
-          <li><button class="journal-block" type="button" data-journal-block="selflessService">Бескорыстное служение</button></li>
-          <li><button class="journal-block" type="button" data-journal-block="meditationTime">Время медитации</button></li>
+          <li><button class="journal-block" type="button" data-journal-block="nonviolence"><span class="journal-block-label" data-block-label>Ненасилие</span><span class="journal-block-progress" data-block-progress>0%</span></button></li>
+          <li><button class="journal-block" type="button" data-journal-block="truthfulness"><span class="journal-block-label" data-block-label>Правдивость</span><span class="journal-block-progress" data-block-progress>0%</span></button></li>
+          <li><button class="journal-block" type="button" data-journal-block="chastity"><span class="journal-block-label" data-block-label>Целомудрие</span><span class="journal-block-progress" data-block-progress>0%</span></button></li>
+          <li><button class="journal-block" type="button" data-journal-block="loveHumility"><span class="journal-block-label" data-block-label>Любовь ко всем существам</span><span class="journal-block-progress" data-block-progress>0%</span></button></li>
+          <li><button class="journal-block" type="button" data-journal-block="vegetarianDiet"><span class="journal-block-label" data-block-label>Вегетарианское питание</span><span class="journal-block-progress" data-block-progress>0%</span></button></li>
+          <li><button class="journal-block" type="button" data-journal-block="selflessService"><span class="journal-block-label" data-block-label>Бескорыстное служение</span><span class="journal-block-progress" data-block-progress>0%</span></button></li>
+          <li><button class="journal-block" type="button" data-journal-block="meditationTime"><span class="journal-block-label" data-block-label>Время медитации</span><span class="journal-block-progress" data-block-progress>0%</span></button></li>
         </ul>
         <p class="block-selection" id="block-selection" role="status" aria-live="polite" hidden></p>
       </div>
