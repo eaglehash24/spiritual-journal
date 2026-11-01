@@ -1431,10 +1431,18 @@ function createHistoryMatrix(dates, copy) {
   return scrollArea;
 }
 
-function getAnalyticsDateKeys(monthKey) {
-  const currentMonth = getTodayKey().slice(0, 7);
+function getAnalyticsDateSets(monthKey) {
+  const today = getTodayKey();
+  const currentMonth = today.slice(0, 7);
   const dates = getDaysInMonth(monthKey);
-  return monthKey === currentMonth ? dates.filter((dateKey) => dateKey <= getTodayKey()) : dates;
+
+  if (monthKey > currentMonth) return { valueDates: [], closedDates: [] };
+  if (monthKey !== currentMonth) return { valueDates: dates, closedDates: dates };
+
+  return {
+    valueDates: dates.filter((dateKey) => dateKey <= today),
+    closedDates: dates.filter((dateKey) => dateKey < today),
+  };
 }
 
 function getPreviousMonthKey(monthKey) {
@@ -1443,25 +1451,32 @@ function getPreviousMonthKey(monthKey) {
   return `${previous.getFullYear()}-${String(previous.getMonth() + 1).padStart(2, '0')}`;
 }
 
-function getNumericAnalytics(dateKeys, valueForEntry) {
-  const values = dateKeys
+function getNumericAnalytics(valueDates, closedDates, valueForEntry) {
+  const values = valueDates
     .map((dateKey) => getCounterValue(valueForEntry(getHistoryEntry(dateKey))))
     .filter((value) => value !== null);
+  const missed = closedDates.filter((dateKey) => (
+    getCounterValue(valueForEntry(getHistoryEntry(dateKey))) === null
+  )).length;
 
   return {
     completed: values.length,
-    missed: dateKeys.length - values.length,
+    missed,
     min: values.length ? Math.min(...values) : null,
     max: values.length ? Math.max(...values) : null,
     total: values.length ? values.reduce((sum, value) => sum + value, 0) : null,
   };
 }
 
-function getChoiceAnalytics(dateKeys, field) {
-  const answers = dateKeys.map((dateKey) => getHistoryEntry(dateKey)?.[field]);
+function getChoiceAnalytics(valueDates, closedDates, field) {
+  const answers = valueDates.map((dateKey) => getHistoryEntry(dateKey)?.[field]);
   const yes = answers.filter((value) => value === 'yes').length;
   const no = answers.filter((value) => value === 'no').length;
-  return { yes, no, missed: dateKeys.length - yes - no };
+  const missed = closedDates.filter((dateKey) => {
+    const value = getHistoryEntry(dateKey)?.[field];
+    return value !== 'yes' && value !== 'no';
+  }).length;
+  return { yes, no, missed };
 }
 
 function formatAnalyticsValue(value) {
@@ -1473,10 +1488,10 @@ function formatPreviousChoiceAnalytics(analytics, copy) {
   return `${copy.dailyChoicesYes} ${analytics.yes} / ${copy.dailyChoicesNo} ${analytics.no}`;
 }
 
-function getViolationAnalyticsGroups(copy, dates, previousDates) {
+function getViolationAnalyticsGroups(copy, valueDates, closedDates, previousValueDates, previousClosedDates) {
   const counterRows = (fields, labels, entryKey) => fields.map((field) => {
-    const current = getNumericAnalytics(dates, (entry) => entry?.[entryKey]?.[field]);
-    const previous = getNumericAnalytics(previousDates, (entry) => entry?.[entryKey]?.[field]);
+    const current = getNumericAnalytics(valueDates, closedDates, (entry) => entry?.[entryKey]?.[field]);
+    const previous = getNumericAnalytics(previousValueDates, previousClosedDates, (entry) => entry?.[entryKey]?.[field]);
     return {
       label: labels[field],
       cells: [
@@ -1498,10 +1513,10 @@ function getViolationAnalyticsGroups(copy, dates, previousDates) {
   ];
 }
 
-function getChoiceAnalyticsRows(copy, dates, previousDates) {
+function getChoiceAnalyticsRows(copy, valueDates, closedDates, previousValueDates, previousClosedDates) {
   return DAILY_CHOICE_FIELDS.map((field) => {
-    const current = getChoiceAnalytics(dates, field);
-    const previous = getChoiceAnalytics(previousDates, field);
+    const current = getChoiceAnalytics(valueDates, closedDates, field);
+    const previous = getChoiceAnalytics(previousValueDates, previousClosedDates, field);
     return {
       label: field === 'vegetarianFood' ? copy.vegetarianFoodTitle : copy.selflessServiceTitle,
       cells: [current.yes, current.no, current.missed, formatPreviousChoiceAnalytics(previous, copy)].map(formatAnalyticsValue),
@@ -1509,18 +1524,18 @@ function getChoiceAnalyticsRows(copy, dates, previousDates) {
   });
 }
 
-function getChoiceAnalyticsSections(copy, dates, previousDates) {
-  return getChoiceAnalyticsRows(copy, dates, previousDates).map((row) => ({
+function getChoiceAnalyticsSections(copy, valueDates, closedDates, previousValueDates, previousClosedDates) {
+  return getChoiceAnalyticsRows(copy, valueDates, closedDates, previousValueDates, previousClosedDates).map((row) => ({
     title: row.label,
     cells: row.cells,
     rows: [],
   }));
 }
 
-function getMeditationAnalyticsRows(copy, dates, previousDates) {
+function getMeditationAnalyticsRows(copy, valueDates, closedDates, previousValueDates, previousClosedDates) {
   return MEDITATION_FIELDS.map((field) => {
-    const current = getNumericAnalytics(dates, (entry) => entry?.[field]);
-    const previous = getNumericAnalytics(previousDates, (entry) => entry?.[field]);
+    const current = getNumericAnalytics(valueDates, closedDates, (entry) => entry?.[field]);
+    const previous = getNumericAnalytics(previousValueDates, previousClosedDates, (entry) => entry?.[field]);
     return {
       label: copy.meditationCounters[field],
       cells: [
@@ -1669,8 +1684,8 @@ function updateHistoryDaysScreen() {
 function updateHistoryAnalyticsScreen() {
   if (!selectedHistoryMonth) return;
   const copy = uiCopy[currentLanguage];
-  const dates = getAnalyticsDateKeys(selectedHistoryMonth);
-  const previousDates = getAnalyticsDateKeys(getPreviousMonthKey(selectedHistoryMonth));
+  const dateSets = getAnalyticsDateSets(selectedHistoryMonth);
+  const previousDateSets = getAnalyticsDateSets(getPreviousMonthKey(selectedHistoryMonth));
   const numericHeaders = [
     copy.historyAnalyticsFilled,
     copy.historyAnalyticsMissed,
@@ -1690,12 +1705,24 @@ function updateHistoryAnalyticsScreen() {
     createHistoryAnalyticsTable(
       copy.historyAnalyticsViolations,
       numericHeaders,
-      getViolationAnalyticsGroups(copy, dates, previousDates),
+      getViolationAnalyticsGroups(
+        copy,
+        dateSets.valueDates,
+        dateSets.closedDates,
+        previousDateSets.valueDates,
+        previousDateSets.closedDates,
+      ),
     ),
     createHistoryAnalyticsTable(
       copy.historyAnalyticsChoices,
       [copy.dailyChoicesYes, copy.dailyChoicesNo, copy.historyAnalyticsMissed, copy.historyAnalyticsPrevious],
-      getChoiceAnalyticsSections(copy, dates, previousDates),
+      getChoiceAnalyticsSections(
+        copy,
+        dateSets.valueDates,
+        dateSets.closedDates,
+        previousDateSets.valueDates,
+        previousDateSets.closedDates,
+      ),
     ),
     createHistoryAnalyticsTable(
       copy.historyAnalyticsMeditation,
@@ -1707,7 +1734,15 @@ function updateHistoryAnalyticsScreen() {
         copy.historyAnalyticsTotal,
         copy.historyAnalyticsPrevious,
       ],
-      [{ rows: getMeditationAnalyticsRows(copy, dates, previousDates) }],
+      [{
+        rows: getMeditationAnalyticsRows(
+          copy,
+          dateSets.valueDates,
+          dateSets.closedDates,
+          previousDateSets.valueDates,
+          previousDateSets.closedDates,
+        ),
+      }],
     ),
   );
 }
